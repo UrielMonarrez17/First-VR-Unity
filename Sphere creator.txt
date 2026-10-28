@@ -1,0 +1,69 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+
+public class DispararEsferas : MonoBehaviour
+{
+    [Header("Configuración de Disparo")]
+    public GameObject prefabEsfera;      // Arrastra aquí tu prefab de la esfera
+    public Transform puntoDeDisparo;     // El lugar de donde saldrá la esfera (ej. la punta del control)
+    public float fuerzaDisparo = 15f;    // Velocidad de la esfera
+
+
+    // Lista para guardar las esferas que vamos creando
+    private List<GameObject> esferasCreadas = new List<GameObject>();
+
+
+    void Update()
+    {
+        // 1. Disparar al apretar el Gatillo Derecho (SecondaryIndexTrigger)
+        if (OVRInput.GetDown(OVRInput.Button.SecondaryIndexTrigger))
+        {
+            Disparar();
+        }
+
+
+        // 2. Destruir todas las esferas al presionar el botón 'A' del control derecho
+        if (OVRInput.GetDown(OVRInput.Button.One))
+        {
+            DestruirEsferas();
+        }
+    }
+
+
+    void Disparar()
+    {
+        if (prefabEsfera != null && puntoDeDisparo != null)
+        {
+            // Crear la esfera en la posición y rotación del punto de disparo
+            GameObject nuevaEsfera = Instantiate(prefabEsfera, puntoDeDisparo.position, puntoDeDisparo.rotation);
+
+
+            // Aplicar fuerza hacia adelante
+            Rigidbody rb = nuevaEsfera.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.AddForce(puntoDeDisparo.forward * fuerzaDisparo, ForceMode.Impulse);
+            }
+
+
+            // Guardar la esfera en la lista para poder destruirla después
+            esferasCreadas.Add(nuevaEsfera);
+        }
+    }
+
+
+    void DestruirEsferas()
+    {
+        // Recorrer la lista y destruir cada esfera en la escena
+        foreach (GameObject esfera in esferasCreadas)
+        {
+            if (esfera != null)
+            {
+                Destroy(esfera);
+            }
+        }
+        // Vaciar la lista porque los objetos ya no existen
+        esferasCreadas.Clear();
+    }
+}
