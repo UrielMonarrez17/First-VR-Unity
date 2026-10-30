@@ -107,3 +107,38 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+
+# ==========================================
+# Unity MCP (Model Context Protocol) & AI Tools
+# ==========================================
+# MCP Client and configuration files
+.claude/
+.claude.json
+.cursor/
+.mcp/
+mcp.json
+mcp_config.json
+**/mcp.json
+**/mcp_config.json
+
+# Local Python & UV Environments (MCP server runtime)
+.venv/
+venv/
+.uv/
+uv.lock
+__pycache__/
+*.pyc
+
+# Unity MCP generated artifacts, logs and test data
+/[Aa]ssets/[Rr]esources/PerformanceTestRunInfo.json*
+/[Aa]ssets/[Rr]esources/PerformanceTestRunSettings.json*
+/[Aa]ssets/[Pp]lugins/Roslyn*
+/[Aa]ssets/MCPForUnity*
+/[Aa]ssets/Plugins/MCP*
+*mcp*.log
+mcp-server.log
+
+# Unity build debug artifacts
+*_BurstDebugInformation_DoNotShip/
+*_BackUpThisFolder_ButDontShipItWithYourGame/
