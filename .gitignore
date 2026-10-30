@@ -110,19 +110,44 @@ InitTestScene*.unity*
 
 
 # ==========================================
-# Unity MCP (Model Context Protocol) & AI Tools
+# MCP (Model Context Protocol) & AI Agent Tools
 # ==========================================
-# MCP Client and configuration files
+# Codebase Memory MCP & Knowledge Graphs
+.codebase-memory/
+.cbm/
+.cbmignore
+*.codebase-memory*
+*graph.db*
+*.db.zst
+
+# MCP configurations and client directories
+.mcp/
+.mcp*/
+*mcp*.json
+mcp_config.json
+**/mcp_config.json
+**/mcp.json
 .claude/
 .claude.json
 .cursor/
-.mcp/
-mcp.json
-mcp_config.json
-**/mcp.json
-**/mcp_config.json
+.gemini/
+.antigravity/
+.agent/
+.cline/
+.roo/
+.continue/
+.aide/
+.zed/
 
-# Local Python & UV Environments (MCP server runtime)
+# Unity MCP & Bridge artifacts
+/[Aa]ssets/[Rr]esources/PerformanceTestRunInfo.json*
+/[Aa]ssets/[Rr]esources/PerformanceTestRunSettings.json*
+/[Aa]ssets/[Pp]lugins/Roslyn*
+/[Aa]ssets/MCPForUnity*
+/[Aa]ssets/Plugins/MCP*
+/[Aa]ssets/*[Mm][Cc][Pp]*
+
+# MCP Runtime, Python & UV Environments
 .venv/
 venv/
 .uv/
@@ -130,14 +155,11 @@ uv.lock
 __pycache__/
 *.pyc
 
-# Unity MCP generated artifacts, logs and test data
-/[Aa]ssets/[Rr]esources/PerformanceTestRunInfo.json*
-/[Aa]ssets/[Rr]esources/PerformanceTestRunSettings.json*
-/[Aa]ssets/[Pp]lugins/Roslyn*
-/[Aa]ssets/MCPForUnity*
-/[Aa]ssets/Plugins/MCP*
+# MCP logs and database files
 *mcp*.log
 mcp-server.log
+*mcp*.sqlite*
+*mcp*.db*
 
 # Unity build debug artifacts
 *_BurstDebugInformation_DoNotShip/
